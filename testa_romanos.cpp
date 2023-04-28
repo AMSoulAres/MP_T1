@@ -14,6 +14,7 @@ TEST_CASE("Numeros romanos - algarismos �nicos", "[romanos]")
 
     REQUIRE(romanos_para_decimal("L") == 50);
 
+
     REQUIRE(romanos_para_decimal("C") == 100);
 
     REQUIRE(romanos_para_decimal("D") == 500);
@@ -34,6 +35,8 @@ TEST_CASE("Numeros romanos - combinação de algarismos", "[romanos]")
     REQUIRE(romanos_para_decimal("XL") == 40);
 
     REQUIRE(romanos_para_decimal("LXX") == 70);
+
+    REQUIRE(romanos_para_decimal("CD") == 400);
 
     REQUIRE(romanos_para_decimal("DLXX") == 570);
 
