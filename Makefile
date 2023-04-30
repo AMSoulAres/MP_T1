@@ -1,10 +1,11 @@
 all: romanos.o testa_romanos.cpp
-	cpplint --recursive ./
+	cpplint --linelength=120 --filter=-build/c++11 romanos.cpp
+	cpplint --linelength=120 --filter=-build/c++11 testa_romanos.cpp
 	g++ -std=c++11 -Wall -fprofile-arcs -ftest-coverage -g romanos.o testa_romanos.cpp -o testa_romanos
 	cppcheck --enable=warning .
 	./testa_romanos
-	gcov *.cpp	
-	valgrind --leak-check=yes --log-file=valgrind.rpt testa_romanos
+	gcov *.cpp
+	valgrind --leak-check=yes --log-file=valgrind.rpt ./testa_romanos
 	#use comentario se necessario 
 
 
@@ -14,6 +15,6 @@ romanos.o : romanos.cpp romanos.hpp
 	
 
 clean:
-	rm -rf *.o *.exe
+	rm -rf *.o *.exe *.gcov *.gcda *.gcno
 	
 	
