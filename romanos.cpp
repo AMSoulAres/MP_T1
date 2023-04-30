@@ -1,64 +1,10 @@
 // "Copyright 2023 Gabriel Amorim Soares e Silva"
 
 #include "./romanos.hpp"
+// #include "MP/TDD_romanos/romanos.hpp"
 #include <iostream>
 #include <map>
-
-bool verificaInputRomano(std::string romano) {
-    int countI = 0;
-    int countX = 0;
-    int countC = 0;
-    int countM = 0;
-    
-    char charAtual = ' ';
-    char charAnterior = ' ';
-
-
-    for (char algarismo : romano) {
-        charAtual = algarismo;
-
-        if (algarismo == 'I') {
-            countI++;
-            if (countI > 3) {
-                return false;
-            }
-        }
-        else if (algarismo == 'X') {
-            countX++;
-            if (countX > 3) {
-                return false;
-            }
-        }
-        else if (algarismo == 'C') {
-            countC++;
-            if (countC > 3) {
-                return false;
-            }
-        }
-        else if (algarismo == 'M') {
-            countM++;
-            if (countM > 3) {
-                return false;
-            }
-        }
-        else if (algarismo == 'D' || algarismo == 'L' || algarismo == 'V') {
-            if (algarismo == 'D' && countC > 1) {
-                return false;
-            }
-            if (algarismo == 'L' && countX > 1) {
-                return false;
-            }
-            if (algarismo == 'V' && countI > 1) {
-                return false;
-            }
-        }
-        else{
-            return false;
-        }
-    }
-
-    return true;
-}
+#include <regex>
 
 int romanos_para_decimal(char const *num_romano) {
     std::map<char, int> associaNumero = {
@@ -72,7 +18,9 @@ int romanos_para_decimal(char const *num_romano) {
 
     std::string romano = num_romano;
 
-    if (verificaInputRomano(romano)) {
+    std::regex validInput("^M{0,4}(CM|CD|D?C{0,3})(XC|XL|L?X{0,3})(IX|IV|V?I{0,3})$");
+
+    if (std::regex_match(romano, validInput)) {
         int resultado = 0, charAnterior = 0, charAtual = 0;
 
         for (int i = romano.length() - 1; i >= 0; i--) {
@@ -83,9 +31,7 @@ int romanos_para_decimal(char const *num_romano) {
             } else {
                 resultado += charAtual;
             }
-
             charAnterior = charAtual;
-
         }
         return resultado;
 

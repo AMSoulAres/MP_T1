@@ -1,9 +1,10 @@
-#define CATCH_CONFIG_MAIN // This tells Catch to provide a main() - only do this in one cpp file
-#include "catch.hpp"
-#include "romanos.hpp"
+// "Copyright 2023 Gabriel Amorim Soares e Silva"
 
-TEST_CASE("Numeros romanos - algarismos �nicos", "[romanos]")
-{
+#define CATCH_CONFIG_MAIN  // This tells Catch to provide a main() - only do this in one cpp file
+#include "./catch.hpp"
+#include "./romanos.hpp"
+
+TEST_CASE("Numeros romanos - algarismos únicos", "[romanos]") {
     REQUIRE(romanos_para_decimal("I") == 1);
 
     REQUIRE(romanos_para_decimal("V") == 5);
@@ -22,8 +23,7 @@ TEST_CASE("Numeros romanos - algarismos �nicos", "[romanos]")
     REQUIRE(romanos_para_decimal("M") == 1000);
 }
 
-TEST_CASE("Numeros romanos - combinação de algarismos", "[romanos]")
-{
+TEST_CASE("Numeros romanos - combinação de algarismos", "[romanos]") {
     REQUIRE(romanos_para_decimal("II") == 2);
 
     REQUIRE(romanos_para_decimal("VIII") == 8);
@@ -47,8 +47,7 @@ TEST_CASE("Numeros romanos - combinação de algarismos", "[romanos]")
     REQUIRE(romanos_para_decimal("MMDCCCXC") == 2890);
 }
 
-TEST_CASE("Numeros romanos - algarismos inv�lidos", "[romanos]")
-{
+TEST_CASE("Numeros romanos - algarismos inválidos", "[romanos]") {
     REQUIRE(romanos_para_decimal("G") == -1);
 
     REQUIRE(romanos_para_decimal("i") == -1);
@@ -70,4 +69,10 @@ TEST_CASE("Numeros romanos - algarismos inv�lidos", "[romanos]")
     REQUIRE(romanos_para_decimal("l") == -1);
 
     REQUIRE(romanos_para_decimal("K") == -1);
+
+    REQUIRE(romanos_para_decimal("XXC") == -1);
+
+    REQUIRE(romanos_para_decimal("VV") == -1);
+
+    REQUIRE(romanos_para_decimal("VX") == -1);
 }

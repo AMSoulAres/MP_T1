@@ -1,8 +1,10 @@
+.gitignore
 testa_romanos.exe
 testa_romanos.gcda
 testa_romanos.gnco
 romanos.o
 *.o
-*.gnco
+*.gcno
 *.exe
 *.gcov
+.vscode
