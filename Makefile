@@ -15,6 +15,6 @@ romanos.o : romanos.cpp romanos.hpp
 	
 
 clean:
-	rm -rf *.o *.exe *.gcov *.gcda *.gcno
+	rm -rf *.o *.exe *.gcov *.gcda *.gcno *.rpt
 	
 	
