@@ -1,5 +1,6 @@
 all: romanos.o testa_romanos.cpp
-	cpplint --linelength=120 --filter=-build/c++11 romanos.cpp
+#No caso de de erro de diretório em romanos.cpp use: cpplint --linelength=120 --filter=-build/c++11,-build/include romanos.cpp
+	cpplint --linelength=120 --filter=-build/c++11, romanos.cpp
 	cpplint --linelength=120 --filter=-build/c++11 testa_romanos.cpp
 	g++ -std=c++11 -Wall -fprofile-arcs -ftest-coverage -g romanos.o testa_romanos.cpp -o testa_romanos
 	cppcheck --enable=warning .

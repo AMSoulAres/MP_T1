@@ -5,6 +5,7 @@
 #include <iostream>
 #include <map>
 #include <regex>
+#include <string>
 
 int romanos_para_decimal(char const *num_romano) {
     std::map<char, int> associaNumero = {
